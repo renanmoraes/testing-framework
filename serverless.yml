@@ -9,12 +9,19 @@ package:
   individually: true
 
 plugins:
+  - serverless-webpack
   - serverless-offline
 
 functions:
   hello:
-    handler: handler.hello
+    handler: hello/handler.hello
     events:
       - http:
-          path: /hi
+          path: /hello
+          method: get
+  get-divisors-and-prime-numbers:
+    handler: get-divisors-and-prime-numbers/handler.runner
+    events:
+      - http:
+          path: /get-divisors-and-prime-numbers
           method: get
