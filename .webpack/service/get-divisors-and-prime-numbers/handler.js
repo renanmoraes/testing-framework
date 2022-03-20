@@ -122,9 +122,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const runner = async (event, context) => (0,_helpers_response__WEBPACK_IMPORTED_MODULE_1__.createResponse)(200, {
-  message: "Encountered a test!"
-});
+const runner = async (event, context) => {
+  const body = event && event.body ? JSON.parse(event.body) : null;
+  if (!body || !body.number) return (0,_helpers_response__WEBPACK_IMPORTED_MODULE_1__.createResponse)(400, {
+    message: 'É necessario enviar um numero para o calculo.'
+  });
+  let number = body.number;
+  let dividers = [];
+  let primeNumbers = [];
+
+  const isPrime = number => {
+    for (let i = 2; i < number; i++) if (number % i === 0) return false;
+
+    return number >= 1;
+  };
+
+  for (let i = 1; i < Number(number) + 1; i++) {
+    if (number % i == 0) {
+      dividers.push(i);
+      if (isPrime(i)) primeNumbers.push(i);
+    }
+  }
+
+  return (0,_helpers_response__WEBPACK_IMPORTED_MODULE_1__.createResponse)(200, {
+    entryNumber: number,
+    dividers: dividers.toString(),
+    primeNumbers: primeNumbers.toString()
+  });
+};
 })();
 
 var __webpack_export_target__ = exports;

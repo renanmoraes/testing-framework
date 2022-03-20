@@ -24,4 +24,4 @@ functions:
     events:
       - http:
           path: /get-divisors-and-prime-numbers
-          method: get
+          method: post

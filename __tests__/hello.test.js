@@ -1,6 +1,6 @@
 
 const handler = require('../hello/handler');
-test('correct greeting is generated', async () => {
+test('Hello testing function', async () => {
     expect(await handler.hello()).toMatchObject({
         statusCode: 200,
         headers: { 'Access-Control-Allow-Origin': '*' },
