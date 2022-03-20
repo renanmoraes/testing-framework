@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const hello = async (event, context) => (0,_helpers_response__WEBPACK_IMPORTED_MODULE_1__.createResponse)(200, {
-  message: "Encountered a test!"
+  message: "Hello a test!"
 });
 })();
 
